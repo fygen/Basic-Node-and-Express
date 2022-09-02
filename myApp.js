@@ -4,12 +4,17 @@ let app = express();
 console.log("Hello World");
 
 // absolutePath using node global variable __dirname
-const absolutePath = __dirname + "/views/index.html"
+const htmlPath = __dirname + "/views/index.html"
+const cssPath = __dirname + "/public"
 
-// app is express object and using get method in path of same directory to make response and requests.
+// Middleware of css coming from express.static
+app.use("/public",express.static(cssPath));
+
+// // app is express object and using get method in path of same directory to make response and requests.
+
 app.get("/", (req, res) => {
      //response.sendFile is a method of when get method is called client receives file from the absolutePath
-     res.sendFile(absolutePath)
+     res.sendFile(htmlPath);
 })
 
 // // when client connects to server if get method called 
