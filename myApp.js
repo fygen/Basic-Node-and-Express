@@ -43,6 +43,11 @@ app.get('/now', (req, res, next) => {
      res.json({ "time": req.time });
 })
 
+// This get method is useful for getting the variable of the :word from client which is a parameter then send it back json format.
+app.get('/:word/echo',(req,res,next)=>{
+     res.json({"echo": req.params.word });
+})
+
 // // when client connects to server if get method called 
 // app.get("/",function(req,res){
 //      //Then in response we send 'hello express to the page'
