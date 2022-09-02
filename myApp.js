@@ -1,4 +1,6 @@
 let express = require('express');
+require('dotenv').config();
+
 let app = express();
 
 console.log("Hello World");
@@ -20,6 +22,8 @@ app.get("/", (req, res) => {
 // when client enters the url of "localhost:3000/json" he sees the json object which can be manipulated.
 app.get("/json",(req,res)=>{
      // response is obje turned into a json format for sending
+     process.env.MESSAGE_STYLE=="uppercase"?
+     obje.message = obje.message.toUpperCase():null;      
      res.json(obje);
 })
 
