@@ -44,8 +44,15 @@ app.get('/now', (req, res, next) => {
 })
 
 // This get method is useful for getting the variable of the :word from client which is a parameter then send it back json format.
-app.get('/:word/echo',(req,res,next)=>{
-     res.json({"echo": req.params.word });
+app.get('/:word/echo', (req, res, next) => {
+     res.json({ "echo": req.params.word });
+})
+
+// This get method uses this convention .../name?first=firstname&last=lastname the data can be reached using req.query object 
+app.get("/name", (req, res, next)=>{
+     res.json({
+          "name": `${req.query.first} ${req.query.last}` 
+     })
 })
 
 // // when client connects to server if get method called 
