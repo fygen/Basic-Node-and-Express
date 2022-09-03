@@ -59,12 +59,18 @@ app.get('/:word/echo', (req, res, next) => {
 //      })
 // })
 
-/* This overrides the previous method by using route we dont have to specify app.post again we can use chained functions */
+/* This overrides the previous method by using route we dont have to specify app.post(path,handler) again we can use chained functions */
 app.route("/name")
      .get((req, res, next) => {
+          /* a get method of a html url with query gives us this values specified at url like .../name?first=firstname&last=lastname */
           res.json({
                "name": `${req.query.first} ${req.query.last}`
           });
+     }).post((req, res) => { 
+          /* when a post method of a input inside the body of the page has name tag of first (name=first) and a name tag of last and an action of /name gives us the req.body values */
+          res.json({
+               "name": `${req.body.first} ${req.body.last}`
+          })
      })
 
 /* when client connects to server if get method called  */
